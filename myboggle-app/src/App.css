@@ -1,38 +1,58 @@
+.logo {
+  position: relative;
+  margin: 10px; /* Space around the logo */
+  max-width: 200px; /* Limit the logo size */
+  height: auto; /* Maintain aspect ratio */
+  display: flex; 
+}
+
 .App {
   text-align: center;
+  color: #282c34;
+  width: 100%;
+  margin: auto;
+  background-color: #5D8AA8;
+ /* display: flex; /* Use flexbox to center content */
+  justify-content: space-between; /* Center horizontally */
+  align-items: center; /* Center vertically */
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+}
+
+.title {
+  color: black;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+/* Optionally, style the board container */
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px; /* Adds spacing between board and other elements */
+
+}
+
+.login-btn {
+  background-color: gray;
   color: white;
+  font-family: 'Irish Grover';
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-btn:hover {
+  background-color: darkgray;
 }

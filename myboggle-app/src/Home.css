@@ -1,0 +1,34 @@
+body {
+    background-color: #5d8aa8; /* Air Force Blue */
+    font-family: 'Irish Grover';
+  }
+  
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .title {
+    color: black;
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .login-btn {
+    background-color: gray;
+    color: rgb(237, 9, 9);
+    font-family: 'Irish Grover';
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: darkgray;
+  }

@@ -1,0 +1,60 @@
+/* Overall container for the mode selection page */
+.mode-selections {
+    background-color: #5D8AA8;
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: space; /* Space out sections */
+    align-items: center; /* Center-align horizontally */
+    font-family: 'Irish Grover', cursive; /* Irish Grover font for the entire page */
+    padding: 20px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+/* Title at the top of the page */
+.welcome-title {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: black
+}
+
+/* Greeting for the user */
+.user-greeting {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: black
+}
+
+/* Container for the buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space out buttons evenly */
+    width: 60%; /* Adjust width to control spacing */
+    color: red
+}
+
+.button-container .mode-button {
+    background-color: gray;
+    color: rgb(237, 9, 9); /* Red text */
+    font-family: 'Irish Grover', cursive;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.mode-button:hover {
+    background-color: darkgray; /* Match hover effect of login button */
+}
+
+/* Message at the bottom of the page */
+.game-message {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: black;
+    max-width: 80%;
+    
+}

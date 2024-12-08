@@ -1,0 +1,13 @@
+.Board-div {
+    font-size: 40pt;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Center the board grid */
+    align-items: center; /* Center the board grid */
+  }
+  
+  .Tile {
+    text-align: center;
+    line-height: 50pt;
+    vertical-align: middle;
+  }
