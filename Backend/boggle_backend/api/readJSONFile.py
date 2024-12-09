@@ -1,7 +1,7 @@
 import re
 import sys
 import json
-from randomGen import *
+from .randomGen import *
 
 def read_json_to_list(file_path):
     # Open and read the JSON file    
