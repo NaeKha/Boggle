@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Games(models.Model):
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=40)
     size = models.IntegerField()
     grid = models.TextField() # Serialize the 2d array to a string:
     foundwords = models.TextField() #Serialize the array of words to a single string:

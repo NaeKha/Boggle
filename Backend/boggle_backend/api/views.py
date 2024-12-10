@@ -8,6 +8,7 @@ from .randomGen import *
 from .readJSONFile import *
 from .boggleSolver import *
 from django.contrib.staticfiles import finders
+from pathlib import Path
 from datetime import datetime
 
 # define the endpoints
@@ -37,17 +38,21 @@ def create_game(request, size):
     if((size <= 10) and (size >= 3)):
         g = random_grid(size)
         now = datetime.now()
-        name = f'Rand{size}Grid:{now.strftime("%Y-%m-%d %H:%M:%S")}'
+        name = f'Rand{size} Grid:{now.strftime("%Y-%m-%d %H:%M:%S")}'
 
         # Find the absolute path of the static JSON file
-        file_path = finders.find("data/full-wordlist.json")
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+        file_path = BASE_DIR / "myboggle-app" / "src" / "full-wordlist.json"
 
-        dictionary = read_json_to_list(file_path)    
+        dictionary = read_json_to_list(file_path)
         mygame = Boggle(g, dictionary)
         fwords = mygame.getSolution()
 
         serializer = GamesSerializer(data={"name": name,"size": size, "grid": str(g), "foundwords": str(fwords)})
         if serializer.is_valid():
             serializer.save()
+            print("Game saved")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            print(f"Errors: {serializer.errors}")
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
