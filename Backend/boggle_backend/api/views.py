@@ -9,6 +9,7 @@ from .readJSONFile import *
 from .boggleSolver import *
 from django.contrib.staticfiles import finders
 from pathlib import Path
+from django.shortcuts import redirect
 from datetime import datetime
 
 # define the endpoints
