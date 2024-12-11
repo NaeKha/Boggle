@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { GAME_STATE } from './GameState.js';
 import Board from './Board.js';
 import GuessInput from './GuessInput.js';
@@ -10,7 +11,7 @@ import './App.css';
 import Home from './Home';
 import ModeSelection from './ModeSelection'; // Import ModeSelection component
 import CountdownTimer from './CountdownTimer';
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
   }, [gameState, size]);
 
   const myMap = useMemo(() => new Map(Object.entries(obj)), [obj]);
+
+  
 
   const Convert = (s) => {  // convert a string into an array of tokens that are strings
     s = s.replace(/'/g, '');
@@ -97,6 +100,7 @@ function App() {
     setIsLoggedIn(true); // Set login state to true
     setIsInModeSelection(true); // Show the mode selection screen
   };
+
   //Countdown timer component 
   const CountdownTimer = ({ initialTime, onTimeUp }) => {
     const [time, setTime] = useState(initialTime);
@@ -117,6 +121,7 @@ function App() {
   };
   
   return (
+     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
     <div className="App">
       {!isLoggedIn ? (
         <Home onLogin={handleLogin} /> // Pass the handleLogin function to Home
@@ -161,6 +166,7 @@ function App() {
         </div>
       )}
     </div>
+    </GoogleOAuthProvider>
   );
 }
 
