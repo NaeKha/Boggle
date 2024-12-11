@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-firmnz%vt*ac^bznvpm(qf(-)1blive4$m-$lv63pu#%a5)&1x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,8 +38,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api'
+    'rest_framework.authtoken',
+    'djoser',
+    'api',
 ]
+
+# REST framework and Djoser configuration
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+# }
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'TOKEN_MODEL': 'rest_framework.authtoken.models.Token',
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

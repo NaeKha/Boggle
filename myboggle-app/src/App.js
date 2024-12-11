@@ -26,12 +26,41 @@ function App() {
   const [mode, setMode] = useState("regular"); // Default to "regular" mode
 
 
+  useEffect(() => {
+    if (gameState === GAME_STATE.IN_PROGRESS) {
+              const url = `https://api/game/create/${size}`; //  or /api/game/create/${size}
+                fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    setGame(data);
+                    const s = data.grid.replace(/'/g, '"');  //replace single ' with double "
+                    setGrid(JSON.parse(s));
+                    setFoundSolutions([]);
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+  }, [gameState, size]);
+
   const myMap = useMemo(() => new Map(Object.entries(obj)), [obj]);
 
+  const Convert = (s) => {  // convert a string into an array of tokens that are strings
+    s = s.replace(/'/g, '');
+    s = s.replace('[', '');
+    s = s.replace(']', '');
+    const tokens = s.split(",") // Split the string into an array of tokens
+    .map(token => token.trim()) // Trim each token
+    .filter(token => token !== ''); // Remove empty tokens
+    return tokens;
+}
+
   useEffect(() => {
-    let tmpAllSolutions = game.solutions;
-    setAllSolutions(tmpAllSolutions);
-  }, [grid, game]);
+    if (typeof game.foundwords !== "undefined") {
+      let tmpAllSolutions = Convert(game.foundwords);
+      setAllSolutions(tmpAllSolutions);
+      }
+}, [grid, game.foundwords]);
 
   useEffect(() => {
     if (gameState === GAME_STATE.IN_PROGRESS) {
