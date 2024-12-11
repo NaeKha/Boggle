@@ -7,7 +7,7 @@ function Login() {
         <>
             <GoogleLogin onSuccess={(credentialResponse) => {
                 console.log(credentialResponse)
-                // navigate('/home')  SHOULD RENAVIGATE TO GAME START MENU
+                navigate('/home')  //SHOULD RENAVIGATE TO GAME START MENU
             }}
             onError={() => console.log("Login Failed")}
             />
@@ -15,9 +15,9 @@ function Login() {
     )
 }
 // CODE TO HANDLE LOGGING OUT CAN JUST ADD THIS TO A BUTTON IN THE APP
-// function handleLogout() {
-//     googleLogout()
-//     navigate('/login')  THEN PROBABLY WANT TO NAVIGATE BACK TO THE LOGIN PAGE
-// }
+//function handleLogout() {
+   //googleLogout()
+   //navigate('/login')  //THEN PROBABLY WANT TO NAVIGATE BACK TO THE LOGIN PAGE
+ //}
 
 export default Login;
