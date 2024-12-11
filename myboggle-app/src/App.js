@@ -10,6 +10,7 @@ import './App.css';
 import Home from './Home';
 import ModeSelection from './ModeSelection'; // Import ModeSelection component
 import CountdownTimer from './CountdownTimer';
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 
 function App() {
