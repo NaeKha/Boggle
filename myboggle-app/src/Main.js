@@ -1,52 +1,16 @@
-import React, { useState } from 'react';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import React from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App';
 
-const Main = () => {
-  const [user, setUser] = useState(null);
+const CLIENT_ID = "749605149162-b35q9japuq2c5i2rp8c7jj2kumnt91pf.apps.googleusercontent.com"
 
-  const handleLoginSuccess = (response) => {
-    console.log('Login Success:', response);
-    // Send the token to the backend for verification
-    const token = response.credential;
-    
-    // Example: send token to backend
-    fetch('/api/auth/google', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('Backend Response:', data);
-        // Optionally, store user data or token in local storage/session
-        setUser(data.user);
-      })
-      .catch((error) => console.error('Error:', error));
-  };
-
-  const handleLoginError = (error) => {
-    console.error('Login Failed:', error);
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-    console.log('User logged out');
-  };
-
-  return (
-    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
-      <div>
-        {!user ? (
-          <GoogleLogin onSuccess={handleLoginSuccess} onError={handleLoginError} />
-        ) : (
-          <div>
-            <h2>Welcome, {user.name}!</h2>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
-      </div>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <GoogleOAuthProvider clientId= {CLIENT_ID}>
+      <App/>
     </GoogleOAuthProvider>
-  );
-};
+  </StrictMode>
+)
 
-export default Main;
