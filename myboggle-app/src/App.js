@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { GAME_STATE } from './GameState.js';
 import Board from './Board.js';
 import GuessInput from './GuessInput.js';
@@ -121,7 +120,6 @@ function App() {
   };
   
   return (
-     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
     <div className="App">
       {!isLoggedIn ? (
         <Home onLogin={handleLogin} /> // Pass the handleLogin function to Home
@@ -166,7 +164,7 @@ function App() {
         </div>
       )}
     </div>
-    </GoogleOAuthProvider>
+    
   );
 }
 
